@@ -40,7 +40,7 @@ namespace BankSimulation.Models
 		{
 			db.Transactions.Add(new Transaction(_depositValue, depositCurrency, this, tt));
 			decimal convertedValue = convertToHomeCurrency(_depositValue, depositCurrency);
-			balance += Math.Round(convertedValue, Transaction.decimalNumberRound);
+			balance += convertedValue; //Math.Round(, Transaction.decimalNumberRound);
 			db.SaveChanges();
 		}
 
@@ -56,7 +56,8 @@ namespace BankSimulation.Models
 		public void withdraw(Context db, decimal _withdrawValue, TransactionType tt, Currency withdrawCurrency)
 		{
 			db.Transactions.Add(new Transaction(_withdrawValue, withdrawCurrency, this, tt));
-			balance -= Math.Round(_withdrawValue, Transaction.decimalNumberRound);
+			decimal convertedValue = convertToHomeCurrency(_withdrawValue, withdrawCurrency);
+			balance -= convertedValue; //Math.Round(, Transaction.decimalNumberRound);
 			db.SaveChanges();
 
 		}
