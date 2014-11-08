@@ -10,6 +10,7 @@ namespace BankSimulation.Models
 	{
 		[Key]
 		public int idClient { get; set; }
+		[Display(Name = "Client Name")]
 		public String name { get; set; }
 		public long? idAccountNumber { get; set; }
 		public virtual BankAccount accounts {get; set;}

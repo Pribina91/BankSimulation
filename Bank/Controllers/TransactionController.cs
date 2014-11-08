@@ -15,8 +15,13 @@ namespace Bank.Controllers
         private Context db = new Context();
 
         // GET: /Transaction/
-		public ActionResult Index(string transactionType,int? minAmount, int? maxAmount) //TODO filtering min max
+		public ActionResult Index(string transactionType, int? minAmount, int? maxAmount, int? idCurrency) //TODO filtering min max
         {
+			this.ViewData["idCurrency"] = new SelectList(db.Currencies, "idCurrency", "name");
+			//var x =Enum.GetValues(typeof(TransactionType)).Cast<TransactionType>().ToList();
+
+			this.ViewData["transactionType"] = new SelectList(Enum.GetValues(typeof(TransactionType)).Cast<TransactionType>().ToList());
+				
             var transactions = db.Transactions.Include(t => t.accountNumber).Include(t => t.currency);
 
 			if (!String.IsNullOrEmpty(transactionType))
@@ -33,7 +38,11 @@ namespace Bank.Controllers
 			{
 				transactions = transactions.Where(s => s.amount <= maxAmount);
 			}
+			if (idCurrency != null)
+			{
 
+				transactions = transactions.Where(s => s.idCurrency== (int)idCurrency);
+			}
             return View(transactions.ToList());
         }
 

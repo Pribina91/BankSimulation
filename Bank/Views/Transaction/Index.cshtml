@@ -12,8 +12,9 @@
 @using (Html.BeginForm())
 {
     <p>
-        Filter by type: @Html.TextBox("transactionType")
-        
+        Filter by type:@Html.DropDownList("transactionType", String.Empty)
+        Currency: @Html.DropDownList("idCurrency", String.Empty)
+
         min:@Html.TextBox("minAmount")
 
         max:@Html.TextBox("maxAmount")

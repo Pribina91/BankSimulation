@@ -7,13 +7,13 @@ namespace Bank.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class test : IMigrationMetadata
+    public sealed partial class decimalRate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(test));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(decimalRate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201411071737052_test"; }
+            get { return "201411081844522_decimalRate"; }
         }
         
         string IMigrationMetadata.Source

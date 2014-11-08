@@ -28,7 +28,7 @@ namespace BankSimulation.Models
 		public decimal balance
 		{
 			get { return this._balance; }
-			set { _balance = Math.Round(value, Transaction.decimalNumberRound); }
+			set { _balance = value; }
 		}
 
 		public virtual Currency currency { get; set; }
@@ -36,38 +36,51 @@ namespace BankSimulation.Models
 		public virtual IEnumerable<Transaction> transactions { get; set; }
 
 		[MethodImpl(MethodImplOptions.Synchronized)]
-		public void deposit(Context db, decimal _depositValue)
+		public void deposit(Context db, decimal _depositValue, TransactionType tt, Currency depositCurrency)
 		{
-			db.Transactions.Add(new Transaction(_depositValue, currency, this, TransactionType.Deposit));
-			balance += Math.Round(_depositValue, Transaction.decimalNumberRound);
+			db.Transactions.Add(new Transaction(_depositValue, depositCurrency, this, tt));
+			decimal convertedValue = convertToHomeCurrency(_depositValue, depositCurrency);
+			balance += Math.Round(convertedValue, Transaction.decimalNumberRound);
 			db.SaveChanges();
 		}
-		[MethodImpl(MethodImplOptions.Synchronized)]
-		public void withdraw(Context db, decimal _withdrawValue)
+
+		private decimal convertToHomeCurrency(decimal value, Currency _currency)
 		{
-			db.Transactions.Add(new Transaction(_withdrawValue, currency, this, TransactionType.Withdraw));
+			//at first covert to default currency by division 
+			decimal convertedValue = (value / _currency.rate) * _currency.units;
+			//at second convert to account currency by multiplication
+			convertedValue = (convertedValue * currency.rate) / currency.units;
+			return convertedValue;
+		}
+		[MethodImpl(MethodImplOptions.Synchronized)]
+		public void withdraw(Context db, decimal _withdrawValue, TransactionType tt, Currency withdrawCurrency)
+		{
+			db.Transactions.Add(new Transaction(_withdrawValue, withdrawCurrency, this, tt));
 			balance -= Math.Round(_withdrawValue, Transaction.decimalNumberRound);
 			db.SaveChanges();
-		}
-		[MethodImpl(MethodImplOptions.Synchronized)]
-		public void transfer(Context db, decimal _transferValue)
-		{
-			try
-			{
-				db.Database.BeginTransaction();
-				db.Transactions.Add(new Transaction(_transferValue, currency, this, TransactionType.Transfer));
-				balance -= Math.Round(-1 * _transferValue, Transaction.decimalNumberRound);
-				db.Transactions.Add( new Transaction(_transferValue, currency, this, TransactionType.Transfer));
-				balance -= Math.Round(-1 * _transferValue, Transaction.decimalNumberRound);
-				db.SaveChanges();
-			}
-			catch (Exception)
-			{
-				db.Dispose(); //TODO check transactions
-			}
-
 
 		}
+		//[MethodImpl(MethodImplOptions.Synchronized)]
+		//public void transfer(Context db, decimal _transferValue)
+		//{
+		//	var transation = db.Database.BeginTransaction();
+		//	try
+		//	{
+		//		db.Transactions.Add(new Transaction(_transferValue, currency, this, TransactionType.Transfer));
+		//		balance -= Math.Round(-1 * _transferValue, Transaction.decimalNumberRound);
+		//		db.Transactions.Add(new Transaction(_transferValue, currency, this, TransactionType.Transfer));
+		//		balance -= Math.Round(-1 * _transferValue, Transaction.decimalNumberRound);
+		//		db.SaveChanges();
+		//		transation.Commit();
+		//	}
+		//	catch (Exception)
+		//	{
+		//		//TODO check transactions
+		//		transation.Rollback();
+		//	}
+
+
+		//}
 		private long getNewAccountNumber()
 		{
 			Context c = new Context();

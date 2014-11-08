@@ -16,18 +16,15 @@ namespace Bank.Migrations
         protected override void Seed(BankSimulation.Models.Context context)
         {
 			
-			Currency currEuro = new Currency("EUR", 1, 1);
-			context.Currencies.AddOrUpdate(currEuro);
+			//Currency currEuro = new Currency("EUR", 1, 1);
+			//context.Currencies.Add(currEuro);
 			
-			Currency currUSD = new Currency("USD", 1.25, 1);
-			context.Currencies.AddOrUpdate(currUSD);
+			//Client c1 = new Client("Kuko");
+			//c1.addAccount(currEuro);
+			//context.Clients.Add(c1);
+			
 
-			context.SaveChanges();
-			Client c1 = new Client("Kuko");
-			c1.addAccount(currEuro);
-			context.Clients.AddOrUpdate(c1);
-			
-			context.SaveChanges();
+			//context.SaveChanges();
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

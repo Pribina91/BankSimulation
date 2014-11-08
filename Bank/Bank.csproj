@@ -127,41 +127,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201411071508439_init.cs" />
-    <Compile Include="Migrations\201411071508439_init.Designer.cs">
-      <DependentUpon>201411071508439_init.cs</DependentUpon>
+    <Compile Include="Migrations\201411081709435_allNew.cs" />
+    <Compile Include="Migrations\201411081709435_allNew.Designer.cs">
+      <DependentUpon>201411081709435_allNew.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201411071642125_changes.cs" />
-    <Compile Include="Migrations\201411071642125_changes.Designer.cs">
-      <DependentUpon>201411071642125_changes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201411071645121_changes1.cs" />
-    <Compile Include="Migrations\201411071645121_changes1.Designer.cs">
-      <DependentUpon>201411071645121_changes1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201411071646463_changes2.cs" />
-    <Compile Include="Migrations\201411071646463_changes2.Designer.cs">
-      <DependentUpon>201411071646463_changes2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201411071657512_changes3.cs" />
-    <Compile Include="Migrations\201411071657512_changes3.Designer.cs">
-      <DependentUpon>201411071657512_changes3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201411071737052_test.cs" />
-    <Compile Include="Migrations\201411071737052_test.Designer.cs">
-      <DependentUpon>201411071737052_test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201411072109587_transaction_type.cs" />
-    <Compile Include="Migrations\201411072109587_transaction_type.Designer.cs">
-      <DependentUpon>201411072109587_transaction_type.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201411072217404_transaction_typeString.cs" />
-    <Compile Include="Migrations\201411072217404_transaction_typeString.Designer.cs">
-      <DependentUpon>201411072217404_transaction_typeString.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201411081700170_decimalChange.cs" />
-    <Compile Include="Migrations\201411081700170_decimalChange.Designer.cs">
-      <DependentUpon>201411081700170_decimalChange.cs</DependentUpon>
+    <Compile Include="Migrations\201411081844522_decimalRate.cs" />
+    <Compile Include="Migrations\201411081844522_decimalRate.Designer.cs">
+      <DependentUpon>201411081844522_decimalRate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BankAccount.cs" />
@@ -227,40 +199,19 @@
     <Content Include="Views\Home\Transfer.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201411071508439_init.resx">
-      <DependentUpon>201411071508439_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411071642125_changes.resx">
-      <DependentUpon>201411071642125_changes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411071645121_changes1.resx">
-      <DependentUpon>201411071645121_changes1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411071646463_changes2.resx">
-      <DependentUpon>201411071646463_changes2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411071657512_changes3.resx">
-      <DependentUpon>201411071657512_changes3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411071737052_test.resx">
-      <DependentUpon>201411071737052_test.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411072109587_transaction_type.resx">
-      <DependentUpon>201411072109587_transaction_type.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411072217404_transaction_typeString.resx">
-      <DependentUpon>201411072217404_transaction_typeString.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411081700170_decimalChange.resx">
-      <DependentUpon>201411081700170_decimalChange.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201411081709435_allNew.resx">
+      <DependentUpon>201411081709435_allNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411081844522_decimalRate.resx">
+      <DependentUpon>201411081844522_decimalRate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

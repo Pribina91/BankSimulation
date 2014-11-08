@@ -9,7 +9,7 @@ namespace BankSimulation.Models
 	public class Currency
 	{
 		public Currency() { }
-		public Currency(String _name,double _rate,int _units)
+		public Currency(String _name,decimal _rate,int _units)
 		{
 			this.name = _name;
 			this.rate = _rate;
@@ -18,8 +18,8 @@ namespace BankSimulation.Models
 		[Key]
 		public int idCurrency { get; set; }
 		public String name { get; set; }
-		double _rate;
-		public double rate
+		decimal _rate;
+		public decimal rate
 		{
 			get { return this._rate; }
 			set { this._rate = Math.Round(value, 3); }
