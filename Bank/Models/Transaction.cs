@@ -11,19 +11,21 @@ namespace BankSimulation.Models
 	public class Transaction
 	{
 		public static int decimalNumberRound = 3;
-		public Transaction() { }
+		public Transaction() {
+			this.timestamp = DateTime.Now;
+		}
 		[Key]
 		public long idTransation { get; set; }
 		public long idAccountNumber { get; set; }
 		public int idCurrency { get; set; }
-		public double amount { get; set; }
+		public decimal amount { get; set; }
 		public String type { get; set; }
 		public DateTime timestamp { get; set; }
 
 		public virtual BankAccount accountNumber { get; set; }
 		public virtual Currency currency { get; set; }
 
-		public Transaction(double _transferValue, Currency _currency, BankAccount _account,TransactionType _transactionType)
+		public Transaction(decimal _transferValue, Currency _currency, BankAccount _account,TransactionType _transactionType)
 		{
 			// TODO: Complete member initialization
 			this.amount = _transferValue;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace BankSimulation.Models
@@ -22,47 +23,42 @@ namespace BankSimulation.Models
 		[Display(Name = "Account Number")]
 		public long idAccountNumber { get; set; }
 		public int idCurrency { get; set; }
-		
-		double _balance;
-		public double balance
+
+		decimal _balance;
+		public decimal balance
 		{
 			get { return this._balance; }
-			set { _balance = Math.Round( value, Transaction.decimalNumberRound); }
+			set { _balance = Math.Round(value, Transaction.decimalNumberRound); }
 		}
 
 		public virtual Currency currency { get; set; }
 		public virtual IEnumerable<Client> clients { get; set; }
 		public virtual IEnumerable<Transaction> transactions { get; set; }
 
-
-		public void deposit(double _depositValue)
+		[MethodImpl(MethodImplOptions.Synchronized)]
+		public void deposit(Context db, decimal _depositValue)
 		{
-			Context db = new Context();
-			Transaction t = new Transaction(_depositValue, currency, this,TransactionType.Deposit);
+			db.Transactions.Add(new Transaction(_depositValue, currency, this, TransactionType.Deposit));
 			balance += Math.Round(_depositValue, Transaction.decimalNumberRound);
-			db.Transactions.Add(t);
-
+			db.SaveChanges();
 		}
-		public void withdraw(double _withdrawValue)
+		[MethodImpl(MethodImplOptions.Synchronized)]
+		public void withdraw(Context db, decimal _withdrawValue)
 		{
-			Context db = new Context();
-			Transaction t = new Transaction(_withdrawValue, currency, this, TransactionType.Withdraw);
-			balance -= Math.Round(-1 * _withdrawValue, Transaction.decimalNumberRound);
-			db.Transactions.Add(t);
+			db.Transactions.Add(new Transaction(_withdrawValue, currency, this, TransactionType.Withdraw));
+			balance -= Math.Round(_withdrawValue, Transaction.decimalNumberRound);
+			db.SaveChanges();
 		}
-		public void transfer(double _transferValue)
+		[MethodImpl(MethodImplOptions.Synchronized)]
+		public void transfer(Context db, decimal _transferValue)
 		{
-			Context db = new Context();
-
 			try
 			{
 				db.Database.BeginTransaction();
-				Transaction t = new Transaction(_transferValue, currency, this, TransactionType.Transfer);
+				db.Transactions.Add(new Transaction(_transferValue, currency, this, TransactionType.Transfer));
 				balance -= Math.Round(-1 * _transferValue, Transaction.decimalNumberRound);
-				db.Transactions.Add(t);
-				t = new Transaction(_transferValue, currency, this, TransactionType.Transfer);
+				db.Transactions.Add( new Transaction(_transferValue, currency, this, TransactionType.Transfer));
 				balance -= Math.Round(-1 * _transferValue, Transaction.decimalNumberRound);
-				db.Transactions.Add(t);
 				db.SaveChanges();
 			}
 			catch (Exception)
@@ -77,8 +73,8 @@ namespace BankSimulation.Models
 			Context c = new Context();
 
 			var maxAccount = (from bn in c.BankAccounts
-								 orderby bn.idAccountNumber descending
-								 select bn).First();
+							  orderby bn.idAccountNumber descending
+							  select bn).First();
 
 			return ++maxAccount.idAccountNumber;
 		}

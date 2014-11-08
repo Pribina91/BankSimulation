@@ -1,6 +1,5 @@
-﻿
-@{
-    ViewBag.Title = "Deposit";
+﻿@{
+    ViewBag.Title = "Transfer";
 }
 
 @using (Html.BeginForm())
@@ -15,23 +14,29 @@
 
 
         <div class="form-group">
-            <label class="control-label col-md-2">Deposit Account:</label>
+            <label class="control-label col-md-2">From Account:</label>
             <div class="col-md-10">
-               @Html.TextBox("depositAccount")
+                @Html.TextBox("fromAccount")
             </div>
         </div>
-
+        <div class="form-group">
+            <label class="control-label col-md-2">To Account:</label>
+            <div class="col-md-10">
+                @Html.TextBox("toAccount")
+            </div>
+        </div>
         <div class="form-group">
             <label class="control-label col-md-2">Amount:</label>
             <div class="col-md-10">
                 @Html.TextBox("amount")
             </div>
         </div>
- 
+
         <div class="form-group">
             <div class="col-md-10">
-                <input type="submit" value="Deposit" class="btn btn-primary btn-large" />
+                <input type="submit" value="Transfer" class="btn btn-primary btn-large" />
             </div>
         </div>
     </div>
 }
+

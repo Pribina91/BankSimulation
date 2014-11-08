@@ -159,6 +159,10 @@
     <Compile Include="Migrations\201411072217404_transaction_typeString.Designer.cs">
       <DependentUpon>201411072217404_transaction_typeString.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411081700170_decimalChange.cs" />
+    <Compile Include="Migrations\201411081700170_decimalChange.Designer.cs">
+      <DependentUpon>201411081700170_decimalChange.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BankAccount.cs" />
     <Compile Include="Models\Client.cs" />
@@ -219,6 +223,8 @@
     <Content Include="Views\Currency\Edit.cshtml" />
     <Content Include="Views\Currency\Index.cshtml" />
     <Content Include="Views\Home\Deposit.cshtml" />
+    <Content Include="Views\Home\Withdraw.cshtml" />
+    <Content Include="Views\Home\Transfer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201411071508439_init.resx">
@@ -244,6 +250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411072217404_transaction_typeString.resx">
       <DependentUpon>201411072217404_transaction_typeString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411081700170_decimalChange.resx">
+      <DependentUpon>201411081700170_decimalChange.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
