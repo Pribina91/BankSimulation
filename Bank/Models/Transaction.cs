@@ -10,7 +10,7 @@ namespace BankSimulation.Models
 	
 	public class Transaction
 	{
-		public static Byte decimalNumberRound = 3;
+		public static Byte decimalNumber = 3;
 		public Transaction() {
 			this.timestamp = DateTime.Now;
 		}

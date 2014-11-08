@@ -18,7 +18,7 @@ namespace BankSimulation.Models
 		{
 			modelBuilder.Entity<Client>().HasOptional(c => c.accounts);
 			modelBuilder.Properties<decimal>()
-				.Configure(config => config.HasPrecision(10, Transaction.decimalNumberRound));
+				.Configure(config => config.HasPrecision(10, Transaction.decimalNumber));
 		}
 	}
 }

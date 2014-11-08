@@ -127,13 +127,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201411081709435_allNew.cs" />
-    <Compile Include="Migrations\201411081709435_allNew.Designer.cs">
-      <DependentUpon>201411081709435_allNew.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201411081844522_decimalRate.cs" />
-    <Compile Include="Migrations\201411081844522_decimalRate.Designer.cs">
-      <DependentUpon>201411081844522_decimalRate.cs</DependentUpon>
+    <Compile Include="Migrations\201411082209457_test.cs" />
+    <Compile Include="Migrations\201411082209457_test.Designer.cs">
+      <DependentUpon>201411082209457_test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BankAccount.cs" />
@@ -206,11 +202,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201411081709435_allNew.resx">
-      <DependentUpon>201411081709435_allNew.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411081844522_decimalRate.resx">
-      <DependentUpon>201411081844522_decimalRate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201411082209457_test.resx">
+      <DependentUpon>201411082209457_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

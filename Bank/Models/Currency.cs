@@ -17,12 +17,13 @@ namespace BankSimulation.Models
 		}
 		[Key]
 		public int idCurrency { get; set; }
+		[Display(Name = "Currency Name")]
 		public String name { get; set; }
 		decimal _rate;
 		public decimal rate
 		{
 			get { return this._rate; }
-			set { this._rate = Math.Round(value, 3); }
+			set { this._rate =value; }
 		}
 		public int units { set; get; }
 
