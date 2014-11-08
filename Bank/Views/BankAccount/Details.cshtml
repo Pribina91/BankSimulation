@@ -1,0 +1,42 @@
+﻿@model BankSimulation.Models.BankAccount
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BankAccount</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.idAccountNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idAccountNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.currency.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.currency.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.balance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.balance)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idAccountNumber }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

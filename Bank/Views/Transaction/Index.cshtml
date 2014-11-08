@@ -1,0 +1,69 @@
+﻿@model IEnumerable<BankSimulation.Models.Transaction>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm())
+{
+    <p>
+        Filter by type: @Html.TextBox("transactionType")
+        
+        min:@Html.TextBox("minAmount")
+
+        max:@Html.TextBox("maxAmount")
+        <input type="submit" value="Filter" />
+    </p>
+    
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.accountNumber.idAccountNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.currency.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.timestamp)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.accountNumber.idAccountNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.currency.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.timestamp)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idTransation }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idTransation }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idTransation })
+        </td>
+    </tr>
+}
+
+</table>

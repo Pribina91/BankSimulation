@@ -1,0 +1,20 @@
+﻿@model BankSimulation.Models.Transaction
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Bank Simulation</h1>
+    <p>
+        <a href="http://asp.net" class="btn btn-primary btn-large">Learn more &raquo;</a>
+        <div class="btn btn-default">
+             @Html.ActionLink("Deposit", "Deposit", "Home")
+        </div>
+        <div class="btn btn-default">
+            @Html.ActionLink("Transfer", "WithDraw", "Home")
+        </div>
+        <div class="btn btn-default">
+            @Html.ActionLink("Transfer", "Transfer", "Home")
+        </div>
+</p>
+</div>
